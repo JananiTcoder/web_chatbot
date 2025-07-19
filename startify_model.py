@@ -15,7 +15,7 @@ def ask():
     response=requests.get(url)
     soup=BeautifulSoup(response.text,'html.parser')
     text=soup.get_text(separator=' ')
-    list=sent_tokenize(text)
+    list = text.split('.')
     response=(Client()).chat(model='llama3',messages=[
         {"role":"system","content":f"You are a helpful assistant.Use this context to help the user:{list}"},
         {"role":"user","content":message}
