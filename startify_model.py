@@ -4,6 +4,8 @@ from flask import Flask, request, jsonify, render_template
 import requests
 from bs4 import BeautifulSoup
 from nltk.tokenize import sent_tokenize
+import nltk
+nltk.download('punkt')
 app=Flask(__name__)
 @app.route("/ask",methods=["POST"])
 def ask():
