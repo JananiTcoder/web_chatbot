@@ -87,7 +87,7 @@
 <body>
     <div class="header">
         <img src="{{ url_for('static', filename='tneapic.png') }}" height="30">
-        <span><b>chatbot</b></span>
+        <span><b>startify chatbot</b></span>
     </div>
 
     <div class="chat-container" id="chat-box">
@@ -100,6 +100,10 @@
     </div>
 
     <script>
+        function formatMarkdownBold(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+        }
+
         function sendMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
@@ -146,7 +150,8 @@
                         reply = "⚠️ No matching response.";
                     }
 
-                    botMsg.innerText = reply;
+                    // Convert **bold** to <b>bold</b> before rendering
+                    botMsg.innerHTML = formatMarkdownBold(reply);
                 }
 
                 chatBox.appendChild(botMsg);

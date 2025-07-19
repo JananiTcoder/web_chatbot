@@ -9,9 +9,7 @@ app=Flask(__name__)
 def ask():
     data=request.get_json() 
     message=data.get("message", "")
-    # url='https://www.auced.com/'
-    url='https://www.auced.com/puthulir'
-    # url='https://www.austartify.com/'
+    url='https://www.austartify.com/'
     response=requests.get(url)
     soup=BeautifulSoup(response.text,'html.parser')
     text=soup.get_text(separator=' ')
